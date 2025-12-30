@@ -11,32 +11,3 @@ a {
 }
 
 /* Animation pour le soleil */
-@keyframes sunRise {
-  0% {
-    transform: translateX(-50%) translateY(100vh);
-  }
-
-  100% {
-    transform: translateX(-50%) translateY(-50%);
-  }
-}
-
-/* Animation pour le titre */
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-#sun {
-  animation: sunRise 2s ease-out forwards;
-}
-
-h1 {
-  animation: fadeInUp 2s ease-out 2s forwards;
-  opacity: 0;
-}
