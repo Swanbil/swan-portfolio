@@ -84,10 +84,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                         {description}
                     </motion.p>
                     {link && <a
-                        className='px-5 py-2 rounded-full text-white bg-black hover:bg-black/80 cursor-pointer'
+                        className='border border-black px-2 py-1 rounded-lg inline-flex items-center gap-1 hover:border-gray-400 hover:bg-neutral-100 transition-colors duration-300 text-sm font-medium'
                         href={link}
                     >
-                        Tester
+                        <span>Voir le projet</span>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15,3 21,3 21,9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
                     </a>}
                 </div>
             </div>
@@ -127,19 +132,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                         />
                     </AnimatePresence>
 
-                    {/* Indicateurs */}
-                    <div className='absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10'>
-                        {images.map((_, index) => (
-                            <button
-                                key={index}
-                                onClick={() => goToImage(index)}
-                                className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentImageIndex
-                                    ? 'bg-white'
-                                    : 'bg-white/40 hover:bg-white/70'
-                                    }`}
-                            />
-                        ))}
-                    </div>
                 </div>
 
                 {/* Boutons de navigation - en dessous de l'image */}
@@ -162,8 +154,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                                     key={index}
                                     onClick={() => goToImage(index)}
                                     className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentImageIndex
-                                        ? 'bg-white shadow-lg'
-                                        : 'bg-white/30 hover:bg-white/60'
+                                        ? 'bg-black shadow-lg'
+                                        : 'bg-black/30 hover:bg-black/60'
                                         }`}
                                     whileHover={{ scale: 1.2 }}
                                     whileTap={{ scale: 0.9 }}

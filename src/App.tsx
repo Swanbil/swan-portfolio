@@ -41,14 +41,14 @@ function App() {
 
         </section>
 
-        <section className="h-[100vh] flex justify-between gap-10 py-8 mt-12 relative">
+        <section className="h-[100vh] flex justify-between gap-10 py-8 mt-24 relative">
           <div className='w-1/2 h-full flex flex-col justify-between'>
             <div>
               <motion.h2
                 className='text-9xl font-semibold'
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
+                transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
                 viewport={{ once: true }}
               >
                 Hi, I'm Swan Bilek
@@ -91,9 +91,9 @@ function App() {
               src={"/profile_picture.jpeg"}
               alt="Swan Bilek"
               className='w-full h-full object-cover rounded-lg'
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
               viewport={{ once: true }}
             />
           </div>
