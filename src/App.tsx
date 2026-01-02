@@ -3,8 +3,43 @@ import Navbar from './components/Navbar'
 import ProjectCard from './components/ProjectCard'
 import { motion } from 'motion/react'
 import { projects } from './data/projects'
+import { useState, useEffect } from 'react'
 
 function App() {
+  const [swanText, setSwanText] = useState('')
+  const [bilekText, setBilekText] = useState('')
+  const fullSwanText = 'Swan'
+  const fullBilekText = 'Bilek'
+
+  useEffect(() => {
+    // Animation pour "Swan"
+    let i = 0
+    const timer = setInterval(() => {
+      if (i < fullSwanText.length) {
+        setSwanText(fullSwanText.slice(0, i + 1))
+        i++
+      } else {
+        clearInterval(timer)
+      }
+    }, 150)
+
+    // Animation pour "Bilek" après un délai
+    setTimeout(() => {
+      let j = 0
+      const bilekTimer = setInterval(() => {
+        if (j < fullBilekText.length) {
+          setBilekText(fullBilekText.slice(0, j + 1))
+          j++
+        } else {
+          clearInterval(bilekTimer)
+        }
+      }, 150)
+    }, 600) // Délai avant de commencer Bilek
+
+    return () => {
+      clearInterval(timer)
+    }
+  }, [])
 
   return (
     <div className="w-full flex flex-col min-h-screen px-4 sm:px-6">
@@ -14,27 +49,43 @@ function App() {
       <div>
 
         <section className="h-[90vh]">
-          <div className='relative w-full h-full overflow-hidden'>
+          <div className='w-full h-full'>
+            <div className='h-full flex items-center justify-center flex-col gap-10'>
 
-            <motion.div
-              className="absolute left-1/2 w-[80%] h-[600px] rounded-b-full blur-3xl opacity-70"
-              style={{ backgroundColor: "#ffc257" }}
-              initial={{ x: "-50%", y: "100vh" }}
-              animate={{ x: "-50%", y: "-50%" }}
-              transition={{ duration: 2, ease: "easeOut" }}
-            />
-
-            <div className="absolute bottom-0 left-0 w-full pb-4">
-              <div className='relative'>
+              <div className='h-full flex justify-center flex-col'>
                 <motion.h1
-                  className="font-medium tracking-wider text-[270px] leading-none text-center"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 3, ease: "easeOut", delay: 1 }}
-                >
-                  Swan <span className='font-thin'>Bilek</span>
+                  className='text-[18vw] uppercase font-thin text-neutral-800 leading-none relative'>
+                  {swanText}
+                  {swanText.length > 0 && swanText.length < fullSwanText.length && (
+                    <motion.span
+                      className='inline-block w-1 h-full bg-neutral-800 ml-1'
+                      animate={{ opacity: [1, 0] }}
+                      transition={{ duration: 0.8, repeat: Infinity, ease: "easeInOut" }}
+                    />
+                  )}
                 </motion.h1>
+                <div className='flex items-center gap-10'>
+                  <motion.img
+                    src="./animation.gif"
+                    className='w-62 h-42'
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8, delay: 2 }}
+                  />
+                  <motion.span
+                    className='text-[18vw] uppercase font-thin text-neutral-800 leading-none relative'>
+                    {bilekText}
+                    {bilekText.length > 0 && bilekText.length < fullBilekText.length && (
+                      <motion.span
+                        className='inline-block w-1 h-full bg-neutral-800 ml-1'
+                        animate={{ opacity: [1, 0] }}
+                        transition={{ duration: 0.8, repeat: Infinity, ease: "easeInOut" }}
+                      />
+                    )}
+                  </motion.span>
+                </div>
               </div>
+
             </div>
 
           </div>
@@ -45,7 +96,7 @@ function App() {
           <div className='w-1/2 h-full flex flex-col justify-between'>
             <div>
               <motion.h2
-                className='text-9xl font-semibold'
+                className='text-9xl font-light'
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
@@ -101,7 +152,7 @@ function App() {
 
         <section className="h-full py-8 mt-12">
           <motion.h2
-            className='text-7xl font-semibold'
+            className='text-7xl font-light'
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}

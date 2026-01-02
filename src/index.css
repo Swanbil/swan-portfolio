@@ -1,7 +1,8 @@
 @import "tailwindcss";
+@import "./archivo.css";
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Archivo-Variable', system-ui, sans-serif;
   line-height: 1.5;
 
 }
