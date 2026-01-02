@@ -1,6 +1,8 @@
 import './App.css'
 import Navbar from './components/Navbar'
+import ProjectCard from './components/ProjectCard'
 import { motion } from 'motion/react'
+import { projects } from './data/projects'
 
 function App() {
 
@@ -86,7 +88,7 @@ function App() {
           </div>
           <div className='w-1/3 h-full'>
             <motion.img
-              src={"https://i.pinimg.com/736x/a7/2b/0c/a72b0c9618e42683cab4b6c1b415992d.jpg"}
+              src={"/profile_picture.jpeg"}
               alt="Swan Bilek"
               className='w-full h-full object-cover rounded-lg'
               initial={{ opacity: 0, scale: 0.9 }}
@@ -97,8 +99,32 @@ function App() {
           </div>
         </section>
 
+        <section className="h-full py-8 mt-12">
+          <motion.h2
+            className='text-7xl font-semibold'
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            Explore my last projects
+          </motion.h2>
+
+          {projects.map((project) => (
+            <ProjectCard
+              key={project.id}
+              title={project.title}
+              description={project.description}
+              images={project.images}
+              link={project.link}
+              reverse={project.reverse}
+            />
+          ))}
+
+        </section >
+
       </div >
-    </div>
+    </div >
 
   )
 }
