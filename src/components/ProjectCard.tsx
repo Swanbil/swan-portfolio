@@ -1,21 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import type { Project } from '../data/projects';
 
 interface ProjectCardProps {
-    title: string;
-    description: string;
-    images: string[];
-    link?: string;
-    reverse?: boolean;
+    project: Project
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
-    title,
-    description,
-    link,
-    images,
-    reverse = false
+    project
 }) => {
+    const { title, description, images, stacks, reverse, link } = project;
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [imagesLoaded, setImagesLoaded] = useState<boolean[]>([]);
     const [slideDirection, setSlideDirection] = useState<'left' | 'right'>('right');
@@ -65,15 +59,31 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             {/* Contenu texte */}
             <div className='w-1/3 h-full flex flex-col justify-between'>
                 <div>
-                    <motion.h3
-                        className='text-3xl'
+                    <div className='flex items-center gap-2'>
+                        <motion.h3
+                            className='text-3xl'
+                            initial={{ opacity: 0, x: reverse ? 50 : -50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.6, delay: 0.2 }}
+                            viewport={{ once: true }}
+                        >
+                            {title}
+                        </motion.h3>
+                    </div>
+
+
+                    <motion.div
+                        className='w-full flex flex-wrap items-center gap-2 my-2'
                         initial={{ opacity: 0, x: reverse ? 50 : -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
+                        transition={{ duration: 0.6, delay: 0.4 }}
                         viewport={{ once: true }}
                     >
-                        {title}
-                    </motion.h3>
+                        {stacks?.map((stack) => (
+                            <span className='bg-neutral-100 text-gray-700 px-2 py-1 text-xs rounded'>{stack.toLocaleLowerCase()}</span>
+                        ))}
+                    </motion.div>
+
                     <motion.p
                         className='text-gray-400 text font-light mt-4 mb-6'
                         initial={{ opacity: 0, x: reverse ? 50 : -50 }}
@@ -83,6 +93,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                     >
                         {description}
                     </motion.p>
+
                     {link && <a
                         className='border border-black px-2 py-1 rounded-lg inline-flex items-center gap-1 hover:border-gray-400 hover:bg-neutral-100 transition-colors duration-300 text-sm font-medium'
                         href={link}

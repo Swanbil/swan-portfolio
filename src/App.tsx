@@ -64,14 +64,7 @@ function App() {
                     />
                   )}
                 </motion.h1>
-                <div className='flex items-center gap-10'>
-                  <motion.img
-                    src="./animation.gif"
-                    className='w-62 h-42'
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.8, delay: 2 }}
-                  />
+                <div className='ml-32 flex items-center gap-10'>
                   <motion.span
                     className='text-[18vw] uppercase font-thin text-neutral-800 leading-none relative'>
                     {bilekText}
@@ -112,8 +105,8 @@ function App() {
                   transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
                   viewport={{ once: true }}
                 >
-                  <span className='text-gray-400'>When I was 13, an older kid stole my beloved skateboard,</span>
-                  board, shattering my dream of becoming the next Rodney Mullen. The fear of being robbed again.
+                  <span className='text-gray-400'>Software engineer since 3 years, I'm passionate about every things around web development. </span>
+                  I'm currently building a new personal project. Some news will come soon !
                 </motion.p>
               </div>
             </div>
@@ -132,7 +125,7 @@ function App() {
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
-                See projects
+                See last projects
               </motion.button>
             </motion.div>
 
@@ -164,11 +157,7 @@ function App() {
           {projects.map((project) => (
             <ProjectCard
               key={project.id}
-              title={project.title}
-              description={project.description}
-              images={project.images}
-              link={project.link}
-              reverse={project.reverse}
+              project={project}
             />
           ))}
 
