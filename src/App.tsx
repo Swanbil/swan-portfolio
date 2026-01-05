@@ -33,7 +33,7 @@ function App() {
                 className='text-[5vw] text-neutral-400 leading-none'
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, ease: "easeOut", delay: 1 }}
+                transition={{ duration: 1, ease: "easeOut", delay: 1.2 }}
               >
                 ウェブ開発
               </motion.span>
@@ -41,7 +41,7 @@ function App() {
                 className='text-[5vw] text-neutral-400 leading-none'
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, ease: "easeOut", delay: 1 }}
+                transition={{ duration: 1, ease: "easeOut", delay: 1.2 }}
               >
                 مهندس برمجيات
               </motion.span>
