@@ -3,43 +3,9 @@ import Navbar from './components/Navbar'
 import ProjectCard from './components/ProjectCard'
 import { motion } from 'motion/react'
 import { projects } from './data/projects'
-import { useState, useEffect } from 'react'
 
 function App() {
-  const [swanText, setSwanText] = useState('')
-  const [bilekText, setBilekText] = useState('')
-  const fullSwanText = 'Swan'
-  const fullBilekText = 'Bilek'
 
-  useEffect(() => {
-    // Animation pour "Swan"
-    let i = 0
-    const timer = setInterval(() => {
-      if (i < fullSwanText.length) {
-        setSwanText(fullSwanText.slice(0, i + 1))
-        i++
-      } else {
-        clearInterval(timer)
-      }
-    }, 150)
-
-    // Animation pour "Bilek" après un délai
-    setTimeout(() => {
-      let j = 0
-      const bilekTimer = setInterval(() => {
-        if (j < fullBilekText.length) {
-          setBilekText(fullBilekText.slice(0, j + 1))
-          j++
-        } else {
-          clearInterval(bilekTimer)
-        }
-      }, 150)
-    }, 600) // Délai avant de commencer Bilek
-
-    return () => {
-      clearInterval(timer)
-    }
-  }, [])
 
   return (
     <div className="w-full flex flex-col min-h-screen px-4 sm:px-6">
@@ -48,40 +14,50 @@ function App() {
 
       <div>
 
-        <section className="h-[90vh]">
-          <div className='w-full h-full'>
-            <div className='h-full flex items-center justify-center flex-col gap-10'>
+        <section className="h-[90vh] relative" id="hero" >
+          <div className='h-full flex flex-col justify-between gap-1'>
 
-              <div className='h-full flex justify-center flex-col'>
-                <motion.h1
-                  className='text-[18vw] uppercase font-thin text-neutral-800 leading-none relative'>
-                  {swanText}
-                  {swanText.length > 0 && swanText.length < fullSwanText.length && (
-                    <motion.span
-                      className='inline-block w-1 h-full bg-neutral-800 ml-1'
-                      animate={{ opacity: [1, 0] }}
-                      transition={{ duration: 0.8, repeat: Infinity, ease: "easeInOut" }}
-                    />
-                  )}
-                </motion.h1>
-                <div className='ml-32 flex items-center gap-10'>
-                  <motion.span
-                    className='text-[18vw] uppercase font-thin text-neutral-800 leading-none relative'>
-                    {bilekText}
-                    {bilekText.length > 0 && bilekText.length < fullBilekText.length && (
-                      <motion.span
-                        className='inline-block w-1 h-full bg-neutral-800 ml-1'
-                        animate={{ opacity: [1, 0] }}
-                        transition={{ duration: 0.8, repeat: Infinity, ease: "easeInOut" }}
-                      />
-                    )}
-                  </motion.span>
-                </div>
-              </div>
+            <div className='self-end'>
+              <motion.img
+                src={"/profile_picture.jpeg"}
+                alt="Swan Bilek"
+                className='md:w-[400px] sm:md:w-[300px] h-[350px] object-cover rounded-lg'
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, ease: "easeOut", delay: 0.6 }}
+                viewport={{ once: true }}
+              />
+            </div>
+            <div className='flex flex-col gap-1'>
+              <motion.span
+                className='text-[5vw] text-neutral-400 leading-none'
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, ease: "easeOut", delay: 1 }}
+              >
+                ウェブ開発
+              </motion.span>
+              <motion.span
+                className='text-[5vw] text-neutral-400 leading-none'
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, ease: "easeOut", delay: 1 }}
+              >
+                مهندس برمجيات
+              </motion.span>
+              <motion.h1
+                className='text-[10vw] leading-none'
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, ease: "easeOut", delay: 0.6 }}
+              >
+                Software Engineer
+              </motion.h1>
 
             </div>
 
           </div>
+
 
         </section>
 
@@ -119,20 +95,21 @@ function App() {
               transition={{ duration: 0.6, ease: "easeOut", delay: 0.6 }}
               viewport={{ once: true }}
             >
-              <motion.button
+              <motion.a
+                href='#projects'
                 className='bg-black text-white px-6 py-3 rounded-full text-lg font-medium cursor-pointer'
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
                 See last projects
-              </motion.button>
+              </motion.a>
             </motion.div>
 
           </div>
           <div className='w-1/3 h-full'>
             <motion.img
-              src={"/profile_picture.jpeg"}
+              src={"https://i.pinimg.com/736x/29/4a/d7/294ad78eff2cb25b677058482073e391.jpg"}
               alt="Swan Bilek"
               className='w-full h-full object-cover rounded-lg'
               initial={{ opacity: 0, y: 50 }}
@@ -143,7 +120,7 @@ function App() {
           </div>
         </section>
 
-        <section className="h-full py-8 mt-12">
+        <section className="h-full py-8 mt-12" id='projects'>
           <motion.h2
             className='text-7xl font-light'
             initial={{ opacity: 0, y: 50 }}

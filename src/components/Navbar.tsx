@@ -4,7 +4,7 @@ const Navbar: React.FC = () => {
     return (
         <nav className="">
             <div className="mx-auto">
-                <div className="flex justify-end items-center h-16 p-2">
+                <div className="flex justify-center items-center h-16 p-2">
                     <div className="flex space-x-12">
                         <a href="#" className="hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium transition-colors">
                             Accueil
