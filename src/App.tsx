@@ -61,7 +61,7 @@ function App() {
 
         </section>
 
-        <section className="h-[95vh] flex justify-between gap-10 py-4 px-4 sm:px-6 mt-52 relative">
+        <section className="h-[95vh] flex justify-between gap-10 py-4 px-4 sm:px-6 mt-36 relative">
           <div className='w-1/2 h-full flex flex-col justify-between'>
             <div>
               <motion.h2
