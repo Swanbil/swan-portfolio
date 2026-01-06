@@ -19,7 +19,7 @@ function App() {
 
             <div className='self-end'>
               <motion.img
-                src={"/profile_picture.jpeg"}
+                src={"./profile_picture.jpeg"}
                 alt="Swan Bilek"
                 className='md:w-[400px] sm:md:w-[300px] h-[350px] object-cover rounded-lg'
                 initial={{ opacity: 0, y: 50 }}
