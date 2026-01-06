@@ -8,13 +8,13 @@ function App() {
 
 
   return (
-    <div className="w-full flex flex-col min-h-screen px-4 sm:px-6">
+    <div className="w-full flex flex-col min-h-screen">
 
       <Navbar />
 
       <div>
 
-        <section className="h-[90vh] relative" id="hero" >
+        <section className="h-[90vh] relative px-4 sm:px-6 py-4" id="hero" >
           <div className='h-full flex flex-col justify-between gap-1'>
 
             <div className='self-end'>
@@ -30,7 +30,7 @@ function App() {
             </div>
             <div className='flex flex-col gap-1'>
               <motion.span
-                className='text-[5vw] text-neutral-400 leading-none'
+                className='text-[3vw] text-neutral-400 leading-none'
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, ease: "easeOut", delay: 1.2 }}
@@ -38,7 +38,7 @@ function App() {
                 ウェブ開発
               </motion.span>
               <motion.span
-                className='text-[5vw] text-neutral-400 leading-none'
+                className='text-[3vw] text-neutral-400 leading-none'
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, ease: "easeOut", delay: 1.2 }}
@@ -61,7 +61,7 @@ function App() {
 
         </section>
 
-        <section className="h-[100vh] flex justify-between gap-10 py-8 mt-24 relative">
+        <section className="h-[95vh] flex justify-between gap-10 py-4 px-4 sm:px-6 mt-52 relative">
           <div className='w-1/2 h-full flex flex-col justify-between'>
             <div>
               <motion.h2
@@ -82,7 +82,7 @@ function App() {
                   viewport={{ once: true }}
                 >
                   <span className='text-gray-400'>Software engineer since 3 years, I'm passionate about every things around web development. </span>
-                  I'm currently building a new personal project. Some news will come soon !
+                  <br />I'm currently building a new personal project. Some news will come soon !
                 </motion.p>
               </div>
             </div>
@@ -92,7 +92,7 @@ function App() {
               className=''
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: 0.6 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
               viewport={{ once: true }}
             >
               <motion.a
@@ -120,7 +120,7 @@ function App() {
           </div>
         </section>
 
-        <section className="h-full py-8 mt-12" id='projects'>
+        <section className="h-full py-8 px-4 sm:px-6 mt-24" id='projects'>
           <motion.h2
             className='text-7xl font-light'
             initial={{ opacity: 0, y: 50 }}
@@ -137,6 +137,83 @@ function App() {
               project={project}
             />
           ))}
+
+        </section >
+
+        <section className="h-full px-8 py-4 mt-12 bg-black text-amber-100" id='skills'>
+          <div className='flex flex-col'>
+
+            <div className='flex md:flex-row flex-col gap-6 justify-between items-center py-4'>
+              <motion.h4
+                className='font text-7xl'
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
+                viewport={{ once: true }}
+              >Backend
+              </motion.h4>
+              <motion.div
+                className='flex flex-col gap-1 text-2xl md:w-1/6 w-full'
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut", delay: 1 }}
+                viewport={{ once: true }}
+              >
+                <span>01 Java/Springboot</span>
+                <span>02 AdonisJS</span>
+                <span>03 Php/Symphony</span>
+
+              </motion.div>
+
+            </div>
+
+            <div className='flex md:flex-row flex-col gap-6 justify-between items-center border-t border-amber-100 py-4'>
+              <motion.h4 className='font text-7xl'
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut", delay: 1.1 }}
+                viewport={{ once: true }}
+              >Frontend / Mobile</motion.h4>
+              <motion.div
+                className='flex flex-col gap-1 text-2xl md:w-1/6 w-full'
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut", delay: 1.5 }}
+                viewport={{ once: true }}
+              >
+                <span>01 ReactJs</span>
+                <span>02 React Native, Expo</span>
+                <span>03 VueJs</span>
+                <span>04 Tanstack Start</span>
+                <span>05 HTML, CSS</span>
+              </motion.div>
+            </div>
+
+            <div className='flex md:flex-row flex-col gap-6 justify-between items-center border-t border-amber-100 py-4'>
+              <motion.h4 className='font text-7xl'
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut", delay: 1.6 }}
+                viewport={{ once: true }}
+              >
+                Devops / Database
+              </motion.h4>
+              <motion.div
+                className='flex flex-col gap-1 text-2xl md:w-1/6 w-full'
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut", delay: 2 }}
+                viewport={{ once: true }}
+              >
+                <span>01 Docker</span>
+                <span>02 Github Actions, Jenkins</span>
+                <span>03 Git</span>
+                <span>04 Redis</span>
+                <span>05 Postgresql / Mysql</span>
+              </motion.div>
+            </div>
+
+          </div>
 
         </section >
 
